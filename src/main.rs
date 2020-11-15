@@ -12,10 +12,9 @@ fn main() {
         .unwrap();
     while let Some(e) = window.next() {
         if let Some(_) = e.update_args() {
-            //
-        } else if let Some(_) = e.render_args() {
-            //
+            // update
         } else if let Some(b) = e.button_args() {
+            // process input
             if let Button::Keyboard(k) = b.button {
                 match b.state {
                     ButtonState::Press => match k {
@@ -28,6 +27,8 @@ fn main() {
                     ButtonState::Release => {}
                 }
             }
+        } else if let Some(_) = e.render_args() {
+            // render
         }
     }
     println!("Hello, world!");
