@@ -44,6 +44,15 @@ impl Ship {
         }
     }
 
+    pub fn shoot(&self) -> Bullet {
+        Bullet {
+            x: rotation_x(SHIP_HEIGHT, self.angle),
+            y: rotation_y(SHIP_HEIGHT, self.angle),
+            xspd: rotation_x(5.0, self.angle),
+            yspd: rotation_x(5.0, self.angle),
+        }
+    }
+
     pub fn tick(&mut self) {
         self.x += self.xspd;
         self.y += self.yspd;
@@ -71,4 +80,12 @@ impl Ship {
             g,
         );
     }
+}
+
+#[derive(Debug)]
+pub struct Bullet {
+    pub x: f64,
+    pub y: f64,
+    pub xspd: f64,
+    pub yspd: f64,
 }

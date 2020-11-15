@@ -4,6 +4,6 @@ use super::stuff::*;
 
 pub struct State {
     pub ship: Ship,
-    pub bullets: Vec<Point>,
+    pub bullets: Vec<Bullet>,
     pub asteroids: Vec<Asteroid>,
 }

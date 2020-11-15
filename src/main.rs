@@ -19,6 +19,7 @@ use stuff::*;
 use update::*;
 
 fn main() {
+    let mut shot = false;
     let mut input: HashMap<char, bool> = HashMap::new();
     let mut r = Ranges::new();
     let mut state = State {
@@ -48,6 +49,7 @@ fn main() {
         .load_font("fonts/november.ttf")
         .expect("error loading font!");
     while let Some(e) = window.next() {
+        println!("{:?}", state.bullets);
         if let Some(_) = e.update_args() {
             // update
             update(&mut state, &input, &mut r);
@@ -66,7 +68,10 @@ fn main() {
                             input.insert('d', true);
                         }
                         Key::Space => {
-                            input.insert('\n', true);
+                            if !shot {
+                                state.bullets.push(state.ship.shoot());
+                                shot = true;
+                            }
                         }
                         _ => {}
                     },
@@ -81,7 +86,7 @@ fn main() {
                             input.insert('d', false);
                         }
                         Key::Space => {
-                            input.insert('\n', false);
+                            shot = false;
                         }
                         _ => {}
                     },
