@@ -11,12 +11,15 @@ use state::*;
 use update::*;
 
 fn main() {
-    let mut window: PistonWindow = WindowSettings::new("Asteroids'", [DIM; 2])
+    let mut window: PistonWindow = WindowSettings::new("Asteroids", [DIM; 2])
         .exit_on_esc(true)
         .resizable(false)
         .decorated(true)
         .build()
         .unwrap();
+    let mut glyphs = window
+        .load_font("fonts/november.ttf")
+        .expect("error loading font!");
     while let Some(e) = window.next() {
         if let Some(_) = e.update_args() {
             // update
