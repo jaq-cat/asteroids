@@ -1,6 +1,7 @@
 use super::conf::*;
 use super::randranges::Ranges;
 use super::stuff::*;
+use piston_window::*;
 use rand::distributions::Uniform;
 
 pub struct Asteroid {
@@ -64,5 +65,28 @@ impl Asteroid {
         self.x += self.xspd;
         self.y += self.yspd;
         !(self.x < 0.0 || self.x > DIM as f64 || self.y < 0.0 || self.y > 0.0)
+    }
+
+    pub fn draw(&self, c: &Context, g: &mut G2d) {
+        for i in (0..self.shape.len() - 1).step_by(2) {
+            let (x1, y1) = self.shape[i];
+            let (x2, y2) = self.shape[i + 1];
+            line(
+                [1.0; 4],
+                1.0,
+                [x1, y1, x2, y2],
+                c.transform.trans(self.x, self.y),
+                g,
+            );
+        }
+        let (x2, y2) = self.shape[self.shape.len() - 1];
+        let (x1, y1) = self.shape[0];
+        line(
+            [1.0; 4],
+            1.0,
+            [x1, y1, x2, y2],
+            c.transform.trans(self.x, self.y),
+            g,
+        );
     }
 }

@@ -50,7 +50,7 @@ impl Ship {
     }
 
     pub fn draw(&self, c: &Context, g: &mut G2d) {
-        for i in (0..self.shape.len() - 1).step_by(2) {
+        for i in (0..self.shape.len() - 1) {
             let (x1, y1) = self.shape[i];
             let (x2, y2) = self.shape[i + 1];
             line(
