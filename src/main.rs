@@ -31,7 +31,7 @@ fn main() {
                 (-OFFSET, SHIP_WIDTH),
             ],
         ),
-        asteroids: Vec::new(),
+        asteroids: vec![Asteroid::new(&mut r)],
         bullets: Vec::new(),
     };
     let mut window: PistonWindow = WindowSettings::new("Asteroids", [DIM; 2])
