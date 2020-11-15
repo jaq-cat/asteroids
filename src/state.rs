@@ -1,7 +1,8 @@
+use super::ship::*;
 use super::stuff::*;
 
 pub struct State {
-    ship: i32,
+    ship: Ship,
     bullets: Vec<Point>,
     asteroids: Vec<i32>,
 }
