@@ -22,6 +22,29 @@ impl Asteroid {
         }
     }
 
+    pub fn get_x_y(r: &mut Ranges) -> (f64, f64) {
+        let x;
+        let y;
+        if r.get(r.zero_one) == 0 {
+            // spawn l/r
+            x = if r.get(r.zero_one) == 0 {
+                0.0
+            } else {
+                DIM as f64
+            };
+            y = r.get(r.dim_half);
+        } else {
+            // spawn t/b
+            x = r.get(r.dim_half);
+            y = if r.get(r.zero_one) == 0 {
+                0.0
+            } else {
+                DIM as f64
+            };
+        }
+        (x, y)
+    }
+
     fn gen_points(x: f64, y: f64, rad: f64, r: &mut Ranges) -> Shape {
         let mut v = Vec::new();
         let ast_round = Uniform::from(rad * AST_ROUND..rad);
