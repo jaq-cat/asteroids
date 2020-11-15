@@ -39,6 +39,7 @@ fn main() {
     while let Some(e) = window.next() {
         if let Some(_) = e.update_args() {
             // update
+            update(&mut state);
         } else if let Some(b) = e.button_args() {
             // process input
             if let Button::Keyboard(k) = b.button {
