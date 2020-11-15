@@ -1,4 +1,5 @@
 use piston_window::*;
+use std::collections::HashMap;
 
 mod conf;
 mod render;
@@ -14,6 +15,7 @@ use stuff::*;
 use update::*;
 
 fn main() {
+    let mut input: HashMap<char, bool> = HashMap::new();
     let mut state = State {
         ship: Ship::new(
             (DIM / 2) as f64,
@@ -33,25 +35,48 @@ fn main() {
         .decorated(true)
         .build()
         .unwrap();
+    window.set_ups(60);
     let mut glyphs = window
         .load_font("fonts/november.ttf")
         .expect("error loading font!");
     while let Some(e) = window.next() {
         if let Some(_) = e.update_args() {
             // update
-            update(&mut state);
+            update(&mut state, &input);
         } else if let Some(b) = e.button_args() {
             // process input
             if let Button::Keyboard(k) = b.button {
                 match b.state {
                     ButtonState::Press => match k {
-                        Key::W => {}
-                        Key::A => {}
-                        Key::D => {}
-                        Key::Space => {}
+                        Key::W => {
+                            input.insert('w', true);
+                        }
+                        Key::A => {
+                            input.insert('a', true);
+                        }
+                        Key::D => {
+                            input.insert('d', true);
+                        }
+                        Key::Space => {
+                            input.insert('\n', true);
+                        }
                         _ => {}
                     },
-                    ButtonState::Release => {}
+                    ButtonState::Release => match k {
+                        Key::W => {
+                            input.insert('w', false);
+                        }
+                        Key::A => {
+                            input.insert('a', false);
+                        }
+                        Key::D => {
+                            input.insert('d', false);
+                        }
+                        Key::Space => {
+                            input.insert('\n', false);
+                        }
+                        _ => {}
+                    },
                 }
             }
         } else if let Some(_) = e.render_args() {
