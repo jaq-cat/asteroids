@@ -1,7 +1,14 @@
 use piston_window::*;
 
 mod conf;
+mod ship;
+mod state;
+mod stuff;
+mod update;
 use conf::*;
+use ship::*;
+use state::*;
+use update::*;
 
 fn main() {
     let mut window: PistonWindow = WindowSettings::new("Asteroids'", [DIM; 2])
