@@ -19,5 +19,8 @@ pub fn update(state: &mut State, input: &HashMap<char, bool>) {
         }
     }
     state.ship.tick();
+    for a in state.asteroids.iter_mut() {
+        a.tick();
+    }
     //state.ship.rotate(1.0);
 }
