@@ -10,20 +10,18 @@ use conf::*;
 use render::*;
 use ship::*;
 use state::*;
+use stuff::*;
 use update::*;
 
 fn main() {
-    const offset: f64 = 15.0 / 2.0;
     let mut state = State {
         ship: Ship::new(
-            //(DIM / 2) as f64,
-            //(DIM / 2) as f64,
-            0.0,
-            0.0,
+            (DIM / 2) as f64,
+            (DIM / 2) as f64,
             vec![
-                (0.0, 15.0 - offset),
-                (-5.0, 0.0 - offset),
-                (5.0, 0.0 - offset),
+                (0.0, SHIP_HEIGHT - OFFSET),
+                (-SHIP_WIDTH, 0.0 - OFFSET),
+                (SHIP_WIDTH, 0.0 - OFFSET),
             ],
         ),
         asteroids: Vec::new(),
