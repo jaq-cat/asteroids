@@ -18,7 +18,7 @@ impl Asteroid {
             y: 0.0,
             xspd: r.get(r.ast_speed),
             yspd: r.get(r.ast_speed),
-            shape: Vec::new(),
+            shape: Self::gen_points(0.0, 0.0, AST_RAD, r),
         }
     }
 
@@ -27,11 +27,11 @@ impl Asteroid {
         let ast_round = Uniform::from(rad * AST_ROUND..rad);
         let edges = r.get(r.ast_edges);
         for i in 0..edges {
-            let d = ast_round.sample(&mut rr.rng);
+            let d = r.get(ast_round);
             let angle = (360.0 / edges as f64) * i as f64;
-            let px = cos_math(d, angle);
-            let py = sin_math(d, angle);
-            v.push([x + px, y + py]);
+            let px = rotation_x(d, angle);
+            let py = rotation_y(d, angle);
+            v.push((x + px, y + py));
         }
         v
     }
