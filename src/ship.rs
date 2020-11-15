@@ -46,10 +46,10 @@ impl Ship {
 
     pub fn shoot(&self) -> Bullet {
         Bullet {
-            x: rotation_x(SHIP_HEIGHT, self.angle),
-            y: rotation_y(SHIP_HEIGHT, self.angle),
+            x: self.x + rotation_x(SHIP_HEIGHT, self.angle),
+            y: self.y + rotation_y(SHIP_HEIGHT, self.angle),
             xspd: rotation_x(5.0, self.angle),
-            yspd: rotation_x(5.0, self.angle),
+            yspd: rotation_y(5.0, self.angle),
         }
     }
 
