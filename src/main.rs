@@ -31,9 +31,12 @@ fn main() {
                 (-OFFSET, SHIP_WIDTH),
             ],
         ),
-        asteroids: vec![Asteroid::new(&mut r)],
+        asteroids: Vec::new(),
         bullets: Vec::new(),
     };
+    for _ in 0..AST_COUNT {
+        state.asteroids.push(Asteroid::new(&mut r));
+    }
     let mut window: PistonWindow = WindowSettings::new("Asteroids", [DIM; 2])
         .exit_on_esc(true)
         .resizable(false)

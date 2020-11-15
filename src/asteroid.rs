@@ -4,6 +4,7 @@ use super::stuff::*;
 use piston_window::*;
 use rand::distributions::Uniform;
 
+#[derive(Clone)]
 pub struct Asteroid {
     pub x: f64,
     pub y: f64,
