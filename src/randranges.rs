@@ -1,4 +1,8 @@
-use rand::{distributions::Uniform, rngs::ThreadRng, thread_rng};
+use rand::{
+    distributions::{uniform::SampleUniform, Distribution, Uniform},
+    rngs::ThreadRng,
+    thread_rng,
+};
 
 use super::conf::*;
 
@@ -26,5 +30,9 @@ impl Ranges {
             ast_speed: Uniform::from(ASTSPD * 0.5..=ASTSPD),
             p_speed: Uniform::from(-1.0..=1.0),
         }
+    }
+
+    pub fn get<T: SampleUniform>(&mut self, range: Uniform<T>) -> T {
+        range.sample(&mut self.rng)
     }
 }

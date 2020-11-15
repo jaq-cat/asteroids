@@ -1,13 +1,17 @@
 use piston_window::*;
 use std::collections::HashMap;
 
+mod asteroid;
 mod conf;
+mod randranges;
 mod render;
 mod ship;
 mod state;
 mod stuff;
 mod update;
+use asteroid::*;
 use conf::*;
+use randranges::Ranges;
 use render::*;
 use ship::*;
 use state::*;
@@ -16,6 +20,7 @@ use update::*;
 
 fn main() {
     let mut input: HashMap<char, bool> = HashMap::new();
+    let mut r = Ranges::new();
     let mut state = State {
         ship: Ship::new(
             (DIM / 2) as f64,
