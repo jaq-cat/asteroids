@@ -22,6 +22,7 @@ fn main() {
         asteroids: Vec::new(),
         bullets: Vec::new(),
     };
+    state.ship.rotate(90.0);
     let mut window: PistonWindow = WindowSettings::new("Asteroids", [DIM; 2])
         .exit_on_esc(true)
         .resizable(false)

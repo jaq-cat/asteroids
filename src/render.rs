@@ -9,7 +9,9 @@ pub fn render(state: &State, c: &Context, g: &mut G2d) {
             [1.0; 4],
             1.0,
             [x1, y1, x2, y2],
-            c.transform.trans(state.ship.x, state.ship.y),
+            c.transform
+                .trans(state.ship.x, state.ship.y)
+                .rot_deg(state.ship.angle),
             g,
         );
     }
