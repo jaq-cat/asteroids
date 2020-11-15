@@ -21,9 +21,9 @@ fn main() {
             (DIM / 2) as f64,
             (DIM / 2) as f64,
             vec![
-                (0.0, SHIP_HEIGHT - OFFSET),
-                (-SHIP_WIDTH, 0.0 - OFFSET),
-                (SHIP_WIDTH, 0.0 - OFFSET),
+                (SHIP_HEIGHT - OFFSET, 0.0),
+                (-OFFSET, -SHIP_WIDTH),
+                (-OFFSET, SHIP_WIDTH),
             ],
         ),
         asteroids: Vec::new(),
