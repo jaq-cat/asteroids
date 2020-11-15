@@ -39,6 +39,9 @@ fn main() {
             }
         } else if let Some(_) = e.render_args() {
             // render
+            window.draw_2d(&e, |c, g, dev| {
+                glyphs.factory.encoder.flush(dev);
+            });
         }
     }
     println!("Hello, world!");
