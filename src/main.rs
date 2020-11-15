@@ -13,16 +13,22 @@ use state::*;
 use update::*;
 
 fn main() {
+    const offset: f64 = 15.0 / 2.0;
     let mut state = State {
         ship: Ship::new(
-            (DIM / 2) as f64,
-            (DIM / 2) as f64,
-            vec![(0.0, 0.0), (100.0, 100.0)],
+            //(DIM / 2) as f64,
+            //(DIM / 2) as f64,
+            0.0,
+            0.0,
+            vec![
+                (0.0, 15.0 - offset),
+                (-5.0, 0.0 - offset),
+                (5.0, 0.0 - offset),
+            ],
         ),
         asteroids: Vec::new(),
         bullets: Vec::new(),
     };
-    state.ship.rotate(90.0);
     let mut window: PistonWindow = WindowSettings::new("Asteroids", [DIM; 2])
         .exit_on_esc(true)
         .resizable(false)
