@@ -13,5 +13,11 @@ pub fn update(state: &mut State, input: &HashMap<char, bool>) {
             state.ship.rotate(5.0);
         }
     }
+    if let Some(&v) = input.get(&'w') {
+        if v {
+            state.ship.accelerate(0.05);
+        }
+    }
+    state.ship.tick();
     //state.ship.rotate(1.0);
 }

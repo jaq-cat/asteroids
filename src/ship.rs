@@ -42,4 +42,9 @@ impl Ship {
             self.yspd = -MAXSPEED;
         }
     }
+
+    pub fn tick(&mut self) {
+        self.x += self.xspd;
+        self.y += self.yspd;
+    }
 }
