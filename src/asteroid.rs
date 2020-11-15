@@ -8,6 +8,7 @@ use rand::distributions::Uniform;
 pub struct Asteroid {
     pub x: f64,
     pub y: f64,
+    pub radius: f64,
     pub xspd: f64,
     pub yspd: f64,
     pub shape: Shape,
@@ -15,34 +16,36 @@ pub struct Asteroid {
 
 impl Asteroid {
     pub fn new(r: &mut Ranges) -> Self {
-        let (x, y) = Self::get_x_y(r);
+        let radius = AST_RAD;
+        let (x, y) = Self::get_x_y(r, radius);
         Self {
             x,
             y,
-            yspd: (r.get(r.ast_speed) * if x <= 0.0 { 1.0 } else { -1.0 }),
-            xspd: (r.get(r.ast_speed) * if y <= 0.0 { 1.0 } else { -1.0 }),
-            shape: Self::gen_points(0.0, 0.0, AST_RAD, r),
+            radius,
+            yspd: (r.get(r.ast_speed) * if y <= 0.1 { 1.0 } else { -1.0 }),
+            xspd: (r.get(r.ast_speed) * if x <= 0.1 { 1.0 } else { -1.0 }),
+            shape: Self::gen_points(0.0, 0.0, radius, r),
         }
     }
 
-    pub fn get_x_y(r: &mut Ranges) -> (f64, f64) {
+    pub fn get_x_y(r: &mut Ranges, radius: f64) -> (f64, f64) {
         let x;
         let y;
         if r.get(r.zero_one) == 0 {
             // spawn l/r
             x = if r.get(r.zero_one) == 0 {
-                0.0
+                -radius
             } else {
-                DIM as f64
+                DIM as f64 + radius
             };
             y = r.get(r.dim_half);
         } else {
             // spawn t/b
             x = r.get(r.dim_half);
             y = if r.get(r.zero_one) == 0 {
-                0.0
+                -radius
             } else {
-                DIM as f64
+                DIM as f64 + radius
             };
         }
         (x, y)
@@ -65,7 +68,10 @@ impl Asteroid {
     pub fn tick(&mut self) -> bool {
         self.x += self.xspd;
         self.y += self.yspd;
-        !(self.x < 0.0 || self.x > DIM as f64 || self.y < 0.0 || self.y > DIM as f64)
+        !(self.x < -self.radius
+            || self.x > DIM as f64 + self.radius
+            || self.y < -self.radius
+            || self.y > DIM as f64 + self.radius)
     }
 
     pub fn draw(&self, c: &Context, g: &mut G2d) {
