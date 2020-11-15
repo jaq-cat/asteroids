@@ -49,7 +49,6 @@ fn main() {
         .load_font("fonts/november.ttf")
         .expect("error loading font!");
     while let Some(e) = window.next() {
-        println!("{:?}", state.bullets);
         if let Some(_) = e.update_args() {
             // update
             update(&mut state, &input, &mut r);

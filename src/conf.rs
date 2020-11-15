@@ -15,4 +15,4 @@ pub const AST_COUNT: usize = 7;
 pub const AST_ROUND: f64 = 0.7;
 
 // rendering
-pub const LINE_WIDTH: f64 = 0.5;
+pub const LINE_WIDTH: f64 = 0.35;
