@@ -1,3 +1,4 @@
+use super::conf::*;
 use super::state::*;
 use piston_window::*;
 
@@ -8,6 +9,11 @@ pub fn render(state: &State, c: &Context, g: &mut G2d) {
         a.draw(c, g);
     }
     for b in state.bullets.iter() {
-        ellipse([1.0; 4], ellipse::circle(b.x, b.y, 1.0), c.transform, g);
+        ellipse(
+            [1.0; 4],
+            ellipse::circle(b.x, b.y, LINE_WIDTH),
+            c.transform,
+            g,
+        );
     }
 }

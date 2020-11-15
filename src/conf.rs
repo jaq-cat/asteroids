@@ -13,3 +13,6 @@ pub const AST_SIZE_VAR: f64 = 0.4;
 pub const AST_EDGES: u8 = 25;
 pub const AST_COUNT: usize = 7;
 pub const AST_ROUND: f64 = 0.7;
+
+// rendering
+pub const LINE_WIDTH: f64 = 0.5;

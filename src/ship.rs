@@ -64,7 +64,7 @@ impl Ship {
             let (x2, y2) = self.shape[i + 1];
             line(
                 [1.0; 4],
-                1.0,
+                LINE_WIDTH,
                 [x1, y1, x2, y2],
                 c.transform.trans(self.x, self.y).rot_deg(self.angle),
                 g,
@@ -74,7 +74,7 @@ impl Ship {
         let (x1, y1) = self.shape[0];
         line(
             [1.0; 4],
-            1.0,
+            LINE_WIDTH,
             [x1, y1, x2, y2],
             c.transform.trans(self.x, self.y).rot_deg(self.angle),
             g,
