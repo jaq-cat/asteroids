@@ -26,5 +26,9 @@ pub fn update(state: &mut State, input: &HashMap<char, bool>, r: &mut Ranges) {
             *a = Asteroid::new(r);
         }
     }
+    for b in state.bullets.iter_mut() {
+        b.x += b.xspd;
+        b.y += b.yspd;
+    }
     //state.ship.rotate(1.0);
 }
