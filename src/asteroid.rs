@@ -13,11 +13,12 @@ pub struct Asteroid {
 
 impl Asteroid {
     pub fn new(r: &mut Ranges) -> Self {
+        let (x, y) = Self::get_x_y(r);
         Self {
-            x: 0.0,
-            y: 0.0,
-            xspd: r.get(r.ast_speed),
-            yspd: r.get(r.ast_speed),
+            x,
+            y,
+            yspd: (r.get(r.ast_speed) * if x <= 0.0 { 1.0 } else { -1.0 }),
+            xspd: (r.get(r.ast_speed) * if y <= 0.0 { 1.0 } else { -1.0 }),
             shape: Self::gen_points(0.0, 0.0, AST_RAD, r),
         }
     }
