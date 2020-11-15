@@ -56,6 +56,16 @@ impl Ship {
     pub fn tick(&mut self) {
         self.x += self.xspd;
         self.y += self.yspd;
+        if self.x < -SHIP_HEIGHT {
+            self.x = DIM as f64 + SHIP_HEIGHT
+        } else if self.x > DIM as f64 + SHIP_HEIGHT {
+            self.x = -SHIP_HEIGHT;
+        }
+        if self.y < -SHIP_HEIGHT {
+            self.y = DIM as f64 + SHIP_HEIGHT
+        } else if self.y > DIM as f64 + SHIP_HEIGHT {
+            self.y = -SHIP_HEIGHT;
+        }
     }
 
     pub fn draw(&self, c: &Context, g: &mut G2d) {
