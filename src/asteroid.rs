@@ -60,8 +60,9 @@ impl Asteroid {
         v
     }
 
-    pub fn tick(&mut self) {
+    pub fn tick(&mut self) -> bool {
         self.x += self.xspd;
         self.y += self.yspd;
+        !(self.x < 0.0 || self.x > DIM as f64 || self.y < 0.0 || self.y > 0.0)
     }
 }
