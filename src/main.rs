@@ -1,16 +1,27 @@
 use piston_window::*;
 
 mod conf;
+mod render;
 mod ship;
 mod state;
 mod stuff;
 mod update;
 use conf::*;
+use render::*;
 use ship::*;
 use state::*;
 use update::*;
 
 fn main() {
+    let mut state = State {
+        ship: Ship::new(
+            (DIM / 2) as f64,
+            (DIM / 2) as f64,
+            vec![(0.0, 0.0), (100.0, 100.0)],
+        ),
+        asteroids: Vec::new(),
+        bullets: Vec::new(),
+    };
     let mut window: PistonWindow = WindowSettings::new("Asteroids", [DIM; 2])
         .exit_on_esc(true)
         .resizable(false)
@@ -40,6 +51,7 @@ fn main() {
         } else if let Some(_) = e.render_args() {
             // render
             window.draw_2d(&e, |c, g, dev| {
+                render(&state, &c, g);
                 glyphs.factory.encoder.flush(dev);
             });
         }
