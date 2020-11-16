@@ -10,6 +10,10 @@ pub fn ship_in_asteroid(ship: &Ship, a: &Asteroid) -> bool {
     distance((ship.x, ship.y), (a.x, a.y)) <= a.radius
 }
 
+pub fn bullet_in_asteroid(b: &Bullet, a: &Asteroid) -> bool {
+    distance((b.x, b.y), (a.x, a.y)) <= a.radius
+}
+
 fn lines_intersect(l1: (Point, Point), l2: (Point, Point)) -> bool {
     let o1 = orientation(l1.0, l1.1, l2.0);
     let o2 = orientation(l1.0, l1.1, l2.1);

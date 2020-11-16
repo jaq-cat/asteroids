@@ -32,9 +32,14 @@ pub fn update(state: &mut State, input: &HashMap<char, bool>, r: &mut Ranges) ->
         b.x += b.xspd;
         b.y += b.yspd;
     }
-    for a in state.asteroids.iter() {
+    for a in state.asteroids.iter_mut() {
         if ship_in_asteroid(&state.ship, &a) {
             return States::Dead;
+        }
+        for b in state.bullets.iter() {
+            if bullet_in_asteroid(&b, &a) {
+                *a = Asteroid::new(r);
+            }
         }
     }
     States::Nothing
