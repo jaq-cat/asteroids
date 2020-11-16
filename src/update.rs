@@ -1,4 +1,5 @@
 use super::asteroid::Asteroid;
+use super::collision::*;
 use super::randranges::Ranges;
 use std::collections::HashMap;
 
@@ -29,6 +30,11 @@ pub fn update(state: &mut State, input: &HashMap<char, bool>, r: &mut Ranges) {
     for b in state.bullets.iter_mut() {
         b.x += b.xspd;
         b.y += b.yspd;
+    }
+    for a in state.asteroids.iter() {
+        if ship_in_asteroid(&state.ship, &a) {
+            println!("AAAA");
+        }
     }
     //state.ship.rotate(1.0);
 }
