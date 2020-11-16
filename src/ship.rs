@@ -92,7 +92,7 @@ impl Ship {
     }
 }
 
-#[derive(Debug)]
+#[derive(Debug, Clone)]
 pub struct Bullet {
     pub x: f64,
     pub y: f64,
@@ -105,9 +105,9 @@ impl Bullet {
         self.x += self.xspd;
         self.y += self.yspd;
         return if self.x > DIM as f64 || self.y > DIM as f64 || self.x < 0.0 || self.y < 0.0 {
-            true
-        } else {
             false
+        } else {
+            true
         };
     }
 }
