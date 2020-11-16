@@ -99,3 +99,15 @@ pub struct Bullet {
     pub xspd: f64,
     pub yspd: f64,
 }
+
+impl Bullet {
+    pub fn tick(&mut self) -> bool {
+        self.x += self.xspd;
+        self.y += self.yspd;
+        return if self.x > DIM as f64 || self.y > DIM as f64 || self.x < 0.0 || self.y < 0.0 {
+            true
+        } else {
+            false
+        };
+    }
+}
