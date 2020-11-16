@@ -1,6 +1,11 @@
 use super::conf::*;
 use std::f64::consts::PI;
 
+pub enum States {
+    Nothing,
+    Dead,
+}
+
 pub type Point = (f64, f64);
 pub type Shape = Vec<Point>;
 

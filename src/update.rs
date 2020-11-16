@@ -1,11 +1,12 @@
 use super::asteroid::Asteroid;
 use super::collision::*;
 use super::randranges::Ranges;
+use super::stuff::*;
 use std::collections::HashMap;
 
 use super::state::*;
 
-pub fn update(state: &mut State, input: &HashMap<char, bool>, r: &mut Ranges) {
+pub fn update(state: &mut State, input: &HashMap<char, bool>, r: &mut Ranges) -> States {
     if let Some(&v) = input.get(&'a') {
         if v {
             state.ship.rotate(-5.0);
@@ -33,8 +34,8 @@ pub fn update(state: &mut State, input: &HashMap<char, bool>, r: &mut Ranges) {
     }
     for a in state.asteroids.iter() {
         if ship_in_asteroid(&state.ship, &a) {
-            println!("AAAA");
+            return States::Dead;
         }
     }
-    //state.ship.rotate(1.0);
+    States::Nothing
 }
