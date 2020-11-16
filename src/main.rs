@@ -11,7 +11,6 @@ mod state;
 mod stuff;
 mod update;
 use asteroid::*;
-use collision::*;
 use conf::*;
 use randranges::Ranges;
 use render::*;

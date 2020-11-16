@@ -1,6 +1,5 @@
 use super::asteroid::Asteroid;
 use super::ship::*;
-use super::stuff::*;
 
 pub struct State {
     pub ship: Ship,
