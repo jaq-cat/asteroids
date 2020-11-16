@@ -2,6 +2,7 @@ use piston_window::*;
 use std::collections::HashMap;
 
 mod asteroid;
+mod collision;
 mod conf;
 mod randranges;
 mod render;
@@ -10,6 +11,7 @@ mod state;
 mod stuff;
 mod update;
 use asteroid::*;
+use collision::*;
 use conf::*;
 use randranges::Ranges;
 use render::*;
