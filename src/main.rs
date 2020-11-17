@@ -25,8 +25,8 @@ fn main() {
     let mut r = Ranges::new();
     let mut state = State {
         ship: Ship::new(
-            (DIM / 2) as f64,
-            (DIM / 2) as f64,
+            (WIDTH / 2) as f64,
+            (HEIGHT / 2) as f64,
             vec![
                 (SHIP_HEIGHT - OFFSET, 0.0),
                 (-OFFSET, -SHIP_WIDTH),
@@ -39,7 +39,7 @@ fn main() {
     for _ in 0..AST_COUNT {
         state.asteroids.push(Asteroid::new(&mut r));
     }
-    let mut window: PistonWindow = WindowSettings::new("Asteroids", [DIM; 2])
+    let mut window: PistonWindow = WindowSettings::new("Asteroids", [WIDTH, HEIGHT])
         .exit_on_esc(true)
         .resizable(false)
         .decorated(true)

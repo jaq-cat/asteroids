@@ -1,4 +1,5 @@
-pub const DIM: u32 = 500;
+pub const WIDTH: u32 = 640;
+pub const HEIGHT: u32 = 480;
 
 // ship
 pub const COOLDOWN: u8 = 15;

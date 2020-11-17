@@ -57,13 +57,13 @@ impl Ship {
         self.x += self.xspd;
         self.y += self.yspd;
         if self.x < -SHIP_HEIGHT {
-            self.x = DIM as f64 + SHIP_HEIGHT
-        } else if self.x > DIM as f64 + SHIP_HEIGHT {
+            self.x = WIDTH as f64 + SHIP_HEIGHT
+        } else if self.x > WIDTH as f64 + SHIP_HEIGHT {
             self.x = -SHIP_HEIGHT;
         }
         if self.y < -SHIP_HEIGHT {
-            self.y = DIM as f64 + SHIP_HEIGHT
-        } else if self.y > DIM as f64 + SHIP_HEIGHT {
+            self.y = HEIGHT as f64 + SHIP_HEIGHT
+        } else if self.y > HEIGHT as f64 + SHIP_HEIGHT {
             self.y = -SHIP_HEIGHT;
         }
     }
@@ -104,7 +104,7 @@ impl Bullet {
     pub fn tick(&mut self) -> bool {
         self.x += self.xspd;
         self.y += self.yspd;
-        return if self.x > DIM as f64 || self.y > DIM as f64 || self.x < 0.0 || self.y < 0.0 {
+        return if self.x > WIDTH as f64 || self.y > HEIGHT as f64 || self.x < 0.0 || self.y < 0.0 {
             false
         } else {
             true

@@ -36,16 +36,16 @@ impl Asteroid {
             x = if r.get(r.zero_one) == 0 {
                 -radius
             } else {
-                DIM as f64 + radius
+                WIDTH as f64 + radius
             };
-            y = r.get(r.dim_half);
+            y = r.get(r.height_half);
         } else {
             // spawn t/b
-            x = r.get(r.dim_half);
+            x = r.get(r.width_half);
             y = if r.get(r.zero_one) == 0 {
                 -radius
             } else {
-                DIM as f64 + radius
+                HEIGHT as f64 + radius
             };
         }
         (x, y)
@@ -69,9 +69,9 @@ impl Asteroid {
         self.x += self.xspd;
         self.y += self.yspd;
         !(self.x < -self.radius
-            || self.x > DIM as f64 + self.radius
+            || self.x > WIDTH as f64 + self.radius
             || self.y < -self.radius
-            || self.y > DIM as f64 + self.radius)
+            || self.y > HEIGHT as f64 + self.radius)
     }
 
     pub fn draw(&self, c: &Context, g: &mut G2d) {
