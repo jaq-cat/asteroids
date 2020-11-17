@@ -16,7 +16,7 @@ pub struct Asteroid {
 
 impl Asteroid {
     pub fn new(r: &mut Ranges) -> Self {
-        let radius = AST_RAD;
+        let radius = r.get(r.ast_r);
         let (x, y) = Self::get_x_y(r, radius);
         Self {
             x,
